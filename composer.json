@@ -1,0 +1,52 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.1.*",
+        "gosquared/php-sdk": "^3.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "phpspec/phpspec": "~2.1"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php56 artisan clear-compiled",
+            "php56 artisan optimize"
+        ],
+        "pre-update-cmd": [
+            "php56 artisan clear-compiled"
+        ],
+        "post-update-cmd": [
+            "php56 artisan optimize"
+        ],
+        "post-root-package-install": [
+            "php56 -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php56 artisan key:generate"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
