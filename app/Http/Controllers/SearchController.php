@@ -17,26 +17,8 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-
         $title = $request->get('title');
         $year = $request->get('year');
-
-        $GS = new \GoSquared([
-            'site_token' => 'GSN-720413-S',
-            'api_key' => 'FMH19BQ6KBRIFDPF',
-        ]);
-
-        $person = $GS->Person(1);
-        $person->identify(['id' => 1, 'email' => 'user@domain.com']);
-        $person->track_event('Search', [
-            'title' => $title,
-            'year' => $year,
-        ]);
-
-        $GS->track_event('Search', [
-            'title' => $title,
-            'year' => $year,
-        ]);
 
         if($year) {
             $lsr = LSR::where('title', 'like', $title)
